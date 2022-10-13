@@ -5,8 +5,8 @@ Description
 A Brick Breaker Game made Juicy
 
 ## Implementation
-/nAssets 
-\nWall/Ball/Paddle change color on hit
+Assets 
+Wall/Ball/Paddle change color on hit
 Colors for Bricks
 Particles when ball hits paddle and bricks
 Tweening for the Ball, Paddle, Bricks
