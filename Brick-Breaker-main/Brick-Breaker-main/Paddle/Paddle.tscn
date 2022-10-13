@@ -1,19 +1,57 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Paddle/Paddle.gd" type="Script" id=1]
+[ext_resource path="res://Assets/puzzlepack (1)/png/paddleRed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/puzzlepack (1)/png/paddleBlu.png" type="Texture" id=3]
+[ext_resource path="res://Assets/confetti.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 10 )
 
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.0108108, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.983784, 0.281818 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0123457, 0.135802, 0.296296, 0.487654, 0.604938, 0.82716, 0.987654, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.265684, 0.265684, 0.265684, 1, 0.346259, 0.346259, 0.346259, 1, 0.44233, 0.44233, 0.44233, 1, 0.501211, 0.501211, 0.501211, 1, 0.522905, 0.522905, 0.522905, 1, 1, 1, 1, 0, 1, 1, 1, 1 )
+
 [node name="Paddle" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 100.0
-margin_bottom = 20.0
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 50, 10 )
+texture = ExtResource( 2 )
+
+[node name="Highlight" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 50, 10 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 50, 10 )
 shape = SubResource( 1 )
 
 [node name="Powerups" type="Node2D" parent="."]
+
+[node name="Confetti" type="CPUParticles2D" parent="."]
+position = Vector2( 50, -10 )
+emitting = false
+amount = 4
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+local_coords = false
+texture = ExtResource( 4 )
+direction = Vector2( 0, -1 )
+spread = 35.0
+initial_velocity = 225.0
+initial_velocity_random = 0.8
+angular_velocity = 745.0
+angular_velocity_random = 0.7
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Tween" type="Tween" parent="."]
